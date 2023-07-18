@@ -50,7 +50,7 @@ const generateGame = () => {
         throw new Error("The dimension of the board must be an even number.")
     }
 
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍']
+    const emojis = ['<img src="https://www.cristobalgalindo.com/memory-game/assets/colgate.png" width="100" height="100">', '🇲🇽', '<img src="https://www.cristobalgalindo.com/memory-game/assets/ajax.png" width="100">', '<img src="https://www.cristobalgalindo.com/memory-game/assets/axion.png" width="100">', '<img src="https://www.cristobalgalindo.com/memory-game/assets/fabuloso.png" width="100">', '🧹', '🪣', '🛀', '🛌', '🔑', '🏡']
     const picks = pickRandom(emojis, (dimensions * dimensions) / 2) 
     const items = shuffle([...picks, ...picks])
     const cards = `
@@ -125,9 +125,11 @@ const flipCard = card => {
                     under <span class="highlight">${state.totalTime}</span> seconds
                 </span>
             `
-
             clearInterval(state.loop)
         }, 1000)
+        setTimeout(function () {
+            window.location.href = `blog.html?flips=${state.totalFlips}&time=${state.totalTime}`; //will redirect to your blog page (an ex: blog.html)
+        }, 2000); //will call the function after 2 secs.
     }
 }
 
